@@ -1,0 +1,7 @@
+# Ignore generated files and other package related files
+
+*.gem
+.bundle
+Gemfile.lock
+.ruby-version
+pkg/*
