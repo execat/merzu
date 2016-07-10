@@ -1,5 +1,5 @@
 require 'merzu/version'
-require 'merzu/transliterate'
+require 'merzu/transliteration'
 require 'merzu/schemes'
 
 module Merzu

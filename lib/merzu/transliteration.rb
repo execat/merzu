@@ -1,4 +1,4 @@
-class Merzu::Transliterate
+class Merzu::Transliteration
   # ::valid_scripts
   #
   # List of valid scripts
@@ -8,8 +8,8 @@ class Merzu::Transliterate
 
   # ::new(text, source_script)
   #
-  # Initialize the Transliterate object
-  #   eg. Merzu::Transliterate.new("कशी आहेस?", :devanagari)
+  # Initialize the Transliteration object
+  #   eg. Merzu::Transliteration.new("कशी आहेस?", :devanagari)
   def initialize(text, source_script)
     @text = text
     @source_script = source_script
@@ -28,8 +28,8 @@ class Merzu::Transliterate
   # Additional rules can be passed in opts. Passed rules hold precedence over
   # the prebuilt rules.
   def transliterate_to(target_script, opts={})
-    # TODO: Throw some sensible error if target_script is not in valid scripts
-    throw NotImplementedError unless self.class.valid_scripts.include? target_script
+    # TODO: Raise some sensible error if target_script is not in valid scripts
+    raise NotImplementedError unless self.class.valid_scripts.include? target_script
 
     if target_script == :iast
       # If target script is IAST, use the private method to transliterate to
@@ -44,10 +44,10 @@ class Merzu::Transliterate
     else
       # If none of the source or target script is :iast, get the IAST
       # representation of the source text and feed that representation to a new
-      # Transliterate object, and call transliterate_to on it with the target
+      # Transliteration object, and call transliterate_to on it with the target
       # script
       iast_str = transliterate_to :iast
-      iast_object = Merzu::Transliterate.new(iast_str, :iast)
+      iast_object = Merzu::Transliteration.new(iast_str, :iast)
       return iast_object.transliterate_to(:malayalam)
     end
   end
@@ -72,16 +72,16 @@ class Merzu::Transliterate
   # Transliterate the current IAST source text to the given target script.
   #
   # Exception conditions:
-  #   Throw an error if the source_script is not IAST
+  #   Raise an error if the source_script is not IAST
   def transliterate_from_iast_to(target_script)
-    # TODO: Throw some sensible error if source_script is not "IAST"
-    throw NotImplementedError if source_script != :iast
+    # TODO: Raise some sensible error if source_script is not "IAST"
+    raise NotImplementedError if source_script != :iast
     ""
   end
 
   # #valid
   #
-  # At any point, return if the state of the Transliterate object is valid
+  # At any point, return if the state of the Transliteration object is valid
   def valid?
     return true if text && self.class.valid_scripts.include?(source_script)
     false
