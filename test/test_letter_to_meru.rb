@@ -7,6 +7,6 @@ class LetterToMeruTest < Test::Unit::TestCase
   end
 
   def test_version
-    assert_true LetterToMeru::VERSION
+    assert_not_nil LetterToMeru::VERSION
   end
 end
