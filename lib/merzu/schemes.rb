@@ -1,4 +1,4 @@
-class LetterToMeru::Schemes
+class Merzu::Schemes
   # ::schemes
   #
   # Returns a hash with languages and their Unicode codes

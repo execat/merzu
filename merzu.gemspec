@@ -1,11 +1,11 @@
 # -*- encoding: utf-8 -*-
 
 $:.push File.expand_path('../lib', __FILE__)
-require 'letter_to_meru'
+require 'merzu'
 
 Gem::Specification.new do |s|
-  s.name        = 'letter_to_meru'
-  s.version     = LetterToMeru::VERSION
+  s.name        = 'merzu'
+  s.version     = Merzu::VERSION
   s.date        = '2016-07-09'
   s.summary     = %q{Transliteration utility for Indic scripts}
   s.description	= %q{Transliteration utility for Indic scripts for any language supported by IAST
@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   }
   s.authors     = ['Anuj More']
   s.email       = ['anujmorex@gmail.com']
-  s.homepage    = 'https://github.com/execat/letter_to_meru'
+  s.homepage    = 'https://github.com/execat/merzu'
   s.license       = 'GPL-3.0'
   s.files         = `git ls-files`.split('\n')
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split('\n')

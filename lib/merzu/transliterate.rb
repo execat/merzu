@@ -1,4 +1,4 @@
-class LetterToMeru::Transliterate
+class Merzu::Transliterate
   # ::valid_scripts
   #
   # List of valid scripts
@@ -9,7 +9,7 @@ class LetterToMeru::Transliterate
   # ::new(text, source_script)
   #
   # Initialize the Transliterate object
-  #   eg. LetterToMeru::Transliterate.new("कशी आहेस?", :devanagari)
+  #   eg. Merzu::Transliterate.new("कशी आहेस?", :devanagari)
   def initialize(text, source_script)
     @text = text
     @source_script = source_script
@@ -47,7 +47,7 @@ class LetterToMeru::Transliterate
       # Transliterate object, and call transliterate_to on it with the target
       # script
       iast_str = transliterate_to :iast
-      iast_object = LetterToMeru::Transliterate.new(iast_str, :iast)
+      iast_object = Merzu::Transliterate.new(iast_str, :iast)
       return iast_object.transliterate_to(:malayalam)
     end
   end

@@ -1,4 +1,4 @@
-# Letter to Meru
+# Merzu
 
 A transliteration engine for Indic scripts.
 
