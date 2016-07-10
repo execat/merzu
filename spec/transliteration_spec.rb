@@ -35,30 +35,6 @@ RSpec.describe Merzu::Transliteration do
     end
     context '#transliterate_to :invalid' do
       it { expect(subject.transliterate_to :invalid).to_raise error }
-      # it { expect(subject.transliterate_to :invalid).to_raise exception(NotImplementedError) }
     end
   end
-
-  
 end
-
-=begin
-class MerzuTest < Test::Unit::TestCase
-  def test_return_value_types_of_transliterate_to
-    # For Devanagari to IAST, Devanagari to Malayalam
-    obj1 = Merzu::Transliteration.new("कशी आहेस?", :devanagari)
-    assert_true obj1.transliterate_to(:iast).class == String
-    assert_true obj1.transliterate_to(:malayalam).class == String
-
-    # For IAST to others
-    obj2 = Merzu::Transliteration.new("kaśī āhesa?", :iast)
-    assert_true obj2.transliterate_to(:malayalam).class == String
-
-    # For invalid entries
-    obj3 = Merzu::Transliteration.new("कशी आहेस?", :devanagari)
-    assert_false catch(NotImplementedError) {
-      obj3.transliterate_to(:invalid).class
-    } == String
-  end
-end
-=end
