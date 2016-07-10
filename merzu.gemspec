@@ -20,6 +20,8 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 2.0.0'
 
   # specify any dependencies here; for example:
-  # s.add_development_dependency 'rspec'
+  s.add_development_dependency 'rspec'
+  s.add_development_dependency 'guard'
+  s.add_development_dependency 'guard-rspec'
   s.add_development_dependency 'pry'
 end
