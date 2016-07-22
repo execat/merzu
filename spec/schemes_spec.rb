@@ -71,4 +71,12 @@ RSpec.describe Merzu::Schemes do
       it { is_expected.to_not include :bengali, :oriya, :malayalam }
     end
   end
+
+  describe 'with acceptance' do
+    subject { Merzu::Schemes.new("తెలుగు ਦਿ मांजर").find_schemes({ acceptance: 0.2 }) }
+    context '#find_schemas' do
+      it { is_expected.to include :devanagari, :telugu }
+      it { is_expected.to_not include :gurmukhi }
+    end
+  end
 end
