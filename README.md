@@ -2,6 +2,8 @@
 
 A transliteration engine for Indic scripts.
 
+Using this scheme for transliteration: http://wiki.tcl.tk/38969
+
 ## Usage
 
 
