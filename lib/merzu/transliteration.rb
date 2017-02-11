@@ -2,8 +2,10 @@ class Merzu::Transliteration
   # ::valid_scripts
   #
   # List of valid scripts
+  # [:iast, :devanagari, :bengali, :gurmukhi, :gujarati, :oriya, :tamil,
+  # :telugu, :kannada, :malayalam, :singhalese]
   def self.valid_scripts
-    [:devanagari, :iast, :malayalam]
+    Merzu::Data.mapping_symbols
   end
 
   # ::new(text, source_script)

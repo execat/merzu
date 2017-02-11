@@ -3,7 +3,7 @@ class Merzu::Schemes
   #
   # Returns an array of all the supported languages
   def self.schemes
-    %w{ Bengali Devanagari Gujarati Gurmukhi Kannada Malayalam Oriya Tamil Telugu }
+    Merzu::Data.mapping_symbols
   end
 
   # ::new(text)
@@ -27,10 +27,10 @@ class Merzu::Schemes
   # will add the scheme in the returned array only if the characters exceed the
   # ratio of the characters in the language to the total number of characters in
   # text
-  def find_schemes
+  def find_schemes(opts = {})
     return NotImplementedError unless text
     self.class.schemes.map do |scheme|
-      scheme.downcase.to_sym if text =~ Regexp.new("\\p{#{scheme}}")
+      scheme if text =~ Regexp.new("\\p{#{scheme}}")
     end.compact
   end
 

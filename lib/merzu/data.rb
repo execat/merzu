@@ -2,13 +2,19 @@ class Merzu::Data
   # The header of the link: https://en.wikipedia.org/wiki/ISO_15919
   # Necessarily in that order
   def self.mapping_headers
-    %w[ISO15919 Devanagari Bengali Gurmukhi Gujarati Oriya Tamil Telugu Kannada Malayalam Singhalese]
+    %w[IAST Devanagari Bengali Gurmukhi Gujarati Oriya Tamil Telugu Kannada Malayalam Singhalese]
+  end
+
+  def self.mapping_symbols
+    mapping_headers.map(&:downcase).map(&:to_sym) - [:iast, :singhalese]
   end
 
   # Use this link: https://en.wikipedia.org/wiki/ISO_15919
   # followed by regex replace magic
+  # Even though the key to refer to the mapping is ":iast", the standard used
+  # is actually the ISO 15919 standard
   def self.mapping
-    {
+    [
       ['a', 'अ', 'অ', 'ਅ', 'અ', 'ଅ', 'அ', 'అ', 'ಅ', 'അ', 'අ'],
       ['ā', 'आ', 'আ', 'ਆ', 'આ', 'ଆ', 'ஆ', 'ఆ', 'ಆ', 'ആ', 'ආ'],
       ['æ', '', '', '', '', '', '', '', '', '', 'ඇ'],
@@ -93,5 +99,6 @@ class Merzu::Data
       ['z', 'ज़', 'জ়', 'ਜ਼', 'જ઼', '', '', 'ౙ', 'ಜ಼', '', ''],
       ['f', 'फ़', 'ফ়', 'ਫ਼', 'ફ઼', '', '', '', 'ಫ಼', '', 'ෆ'],
       ['w', '', 'ব়', '', '', 'ୱ', '', '', '', '', ''],
-    }
+    ]
   end
+end
