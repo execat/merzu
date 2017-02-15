@@ -2,11 +2,11 @@ class Merzu::Data
   # The header of the link: https://en.wikipedia.org/wiki/ISO_15919
   # Necessarily in that order
   def self.mapping_headers
-    %w[IAST Devanagari Bengali Gurmukhi Gujarati Oriya Tamil Telugu Kannada Malayalam Singhalese]
+    %w[IAST Devanagari Bengali Gurmukhi Gujarati Oriya Tamil Telugu Kannada Malayalam Sinhala]
   end
 
   def self.mapping_symbols
-    mapping_headers.map(&:downcase).map(&:to_sym) - [:iast, :singhalese]
+    mapping_headers.map(&:downcase).map(&:to_sym) - [:iast]
   end
 
   # Use this link: https://en.wikipedia.org/wiki/ISO_15919
