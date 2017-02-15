@@ -5,7 +5,7 @@ class Merzu::Transliteration
   # [:iast, :devanagari, :bengali, :gurmukhi, :gujarati, :oriya, :tamil,
   # :telugu, :kannada, :malayalam, :singhalese]
   def self.valid_scripts
-    Merzu::Data.mapping_symbols
+    Merzu::Data.mapping_headers
   end
 
   # ::new(text, source_script)
@@ -50,7 +50,7 @@ class Merzu::Transliteration
       # script
       iast_str = transliterate_to :iast
       iast_object = Merzu::Transliteration.new(iast_str, :iast)
-      return iast_object.transliterate_to(:malayalam)
+      return iast_object.transliterate_to(target_script)
     end
   end
 

@@ -1,7 +1,7 @@
 class Merzu::Schemes
   # ::schemes
   #
-  # Returns an array of all the supported languages
+  # Returns an array of all the supported languages except IAST
   def self.schemes
     Merzu::Data.mapping_symbols
   end
