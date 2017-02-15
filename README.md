@@ -17,6 +17,8 @@ The International Alphabet of Sanskrit Transliteration (IAST) is a subset of the
 
 Read more about IAST [here](https://en.wikipedia.org/wiki/International_Alphabet_of_Sanskrit_Transliteration). Find the entire transliteration chart [here](https://en.wikipedia.org/wiki/Wikipedia:Indic_transliteration#Consonants).
 
+The overview for the ISO 15919 is [here](https://en.wikipedia.org/wiki/ISO_15919#Overview). A similar overview for Brahmi consonants is [here](https://en.wikipedia.org/wiki/Brahmic_scripts) which can be used for mappings to other languages not covered in ISO 15919 like Tibetan.
+
 ## Tests
 
 You can run the tests by executing `rake`.
