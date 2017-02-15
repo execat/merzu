@@ -31,7 +31,22 @@ class Merzu::Transliteration
     source_index = self.class.valid_scripts.index(source_script)
     source_array = fetch_mapping_array(source_index)
 
-    binding.pry
+    text.split("").map { |character| process(character, source_array, iast_array) }.join
+  end
+
+  def process(character, from_array, to_array)
+    return " " if character == " "
+    return "?" if character == "?"
+    c =
+      if Merzu::Data.devanagari_vowel_mappings[:vowel].index(character)
+        index = Merzu::Data.devanagari_vowel_mappings[:vowel].index(character)
+        Merzu::Data.devanagari_vowel_mappings[:whole][index]
+      else
+        character
+      end
+    index = from_array.index(c)
+    binding.pry if index == nil
+    to_array[index]
   end
 
   def transliterate_from_iast_to(target_script)

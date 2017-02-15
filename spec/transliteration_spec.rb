@@ -19,6 +19,7 @@ RSpec.describe Merzu::Transliteration do
     subject { Merzu::Transliteration.new("कधी रे येशील तू?", :devanagari) }
     context '#transliterate_to :iast (to IAST)' do
       it { expect(subject.transliterate_to :iast).to be_a String }
+      it { expect(subject.transliterate_to :iast).to eq "kadhī rē yēśīla tū?" }
     end
     context '#transliterate_to :devanagari (to self)' do
       it { expect(subject.transliterate_to :devanagari).to be_a String }
