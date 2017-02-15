@@ -31,12 +31,16 @@ class Merzu::Transliteration
     source_index = self.class.valid_scripts.index(source_script)
     source_array = fetch_mapping_array(source_index)
 
-    text.split("").map { |character| process(character, source_array, iast_array) }.join
+    first_part = text.split("").each_cons(2).map do |character, next_character|
+      process(character, source_array, iast_array, { schwa: put_schwa?(character, next_character) })
+    end.join
+    # Schwa still needs to go in
+    final_character = process(text[-1], source_array, iast_array)
+    first_part + final_character
   end
 
-  def process(character, from_array, to_array)
-    return " " if character == " "
-    return "?" if character == "?"
+  def process(character, from_array, to_array, opts={})
+    return character if self.class.special_characters.include? character
     c =
       if Merzu::Data.devanagari_vowel_mappings[:vowel].index(character)
         index = Merzu::Data.devanagari_vowel_mappings[:vowel].index(character)
@@ -46,7 +50,17 @@ class Merzu::Transliteration
       end
     index = from_array.index(c)
     binding.pry if index == nil
-    to_array[index]
+    to_array[index] + (opts[:schwa] ? 'a' : '')
+  end
+
+  def self.special_characters
+    [" ", "?"]
+  end
+
+  def put_schwa?(character, next_character)
+    return false if Merzu::Data.devanagari_vowel_mappings[:vowel].include?(character)
+    return true if self.class.special_characters.include?(next_character)
+    !Merzu::Data.devanagari_vowel_mappings[:vowel].include?(next_character)
   end
 
   def transliterate_from_iast_to(target_script)
